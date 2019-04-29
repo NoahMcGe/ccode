@@ -1,7 +1,8 @@
-//nm8x8.ino
+//NSM.ino
+//Noah McGehee
 #include <iostream>
 #include <stdio.h>
-int trs();
+int nsm();
 
 int main()
 {
@@ -9,11 +10,12 @@ int main()
 	return 0;
 }
 // Function
-int trs (){
+int nsm (){
 	int r,c;
 	int red, green, blue;
 	int val = 0;
 	int m[8][8] = {
+///////add your 8x8 in
 		{1,0,0,0,0,0,0,1} ,
 		{2,1,1,1,1,1,1,2} ,
 		{0,1,1,0,0,1,1,0} ,
@@ -23,6 +25,7 @@ int trs (){
 		{0,1,1,1,1,1,1,0},
 		{2,0,0,0,0,0,0,2}
 	};
+//////////////////////////////////////////////////////////////////////////////////////////////////
 	
 		red = 0; green = 0; blue = 0;
 		for (r = 0; r < 8; r++){
@@ -38,6 +41,7 @@ int trs (){
 					case 2:
 					red = 255; green = 255; blue = 0;
 					break;
+//////////////////////////////////////////////////////////////////////////////////////////////////
 				}
 				std::cout<<"["<<red<<" "<<green<<" "<<blue<<"]";
 			}

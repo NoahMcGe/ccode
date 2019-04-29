@@ -1,0 +1,49 @@
+//NOAH MCGEHEE
+//name the file initials.txt
+// then push it back to https://github.com/tritechsc/am-projects/
+void cwc(Adafruit_NeoPixel &pixels) {
+//ser base color
+int i,r,c;//row and column
+int red = 0, green = 0, blue = 0;
+int m[8][8] = {
+// add your 8x8 2d arry here
+		{1,0,0,0,0,0,0,1} ,
+		{2,1,1,1,1,1,1,2} ,
+		{0,1,1,0,0,1,1,0} ,
+		{2,1,2,1,1,2,1,2} ,
+		{0,1,0,1,1,0,1,0} ,
+		{2,1,1,2,2,1,1,2} ,
+		{0,1,1,1,1,1,1,0},
+		{2,0,0,0,0,0,0,2}
+    };
+// end of 2d array
+  i = 0;// set neo-pixel number to zero
+  int val;
+//  loop that increments r,c and i
+  for (r = 0; r < 8; r++){
+    for (c = 0; c < 8; c++){
+      // set the color for red green and blue
+ // add your switch statement here
+      val = m[r][c];
+      switch ( val ) {
+          case 0:
+					red = 0; green = 0; blue = 0;
+					break;
+					case 1:
+					red = 255; green = 0; blue = 0;
+					break;
+					case 2:
+					red = 255; green = 255; blue = 0;
+					break;
+}
+// end of switch statment
+      // end of set the color
+      pixels.setPixelColor(i, pixels.Color(red,green,blue));
+ 
+      pixels.show(); 
+      i++;
+      //delay(50);
+     //Serial.print(c[x][y]);
+    }//end y
+}//end y and end of loop that increments r,c and i
+}
