@@ -1,5 +1,5 @@
 // https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glOrtho.xml
-// g++ plot_ahk_xy.cpp -lglut -lGL -o plot_xy.o
+// g++ plotDB.cpp -lglut -lGL -o plotDB.o
 #include <iostream>
 #include <cmath>
 #include <stdio.h>
@@ -13,46 +13,32 @@ void plot2Dpoint(float x,float y, float red, float green, float blue){
 
 void drawPoints()
 {
-    int x,y;
+    int i,j;
     float h,k;
-    float red = 1.0,green = 0 ,blue = 0.0;
+    float red = 120.0,green = 2 ,blue = 190.0;
     //glClearColor(red,green,blue,alpha);
-    glClearColor(0.4, 0.4, 0.4, 1.0);
+    glClearColor(0.9, 0.0, 0.0, 9.0);
     glClear(GL_COLOR_BUFFER_BIT);
-    glColor3f(1.0, 1.0, 1.0);
+    glColor3f(3.0, 4.0, 1.0);
     //void glOrtho(GLdouble left,  GLdouble right,
     //GLdouble bottom,  GLdouble top,
     //GLdouble nearVal,  GLdouble farVal);
-    glOrtho(-400.0, 400.0, -400.0, 400.0, -400.0, 400.0);
+    glOrtho(-1.0, 1.0, -1.0, 1.0, -1.0, 1.0);
     h = -1.0; k = -1.0;
-    glPointSize(3.0);
+    glPointSize(5.0);
     glBegin(GL_POINTS);// points
-    //plot x
-    for (x = -400; x <= 400; x= x+10){
-      h = x;  k = 0; plot2Dpoint(h,k,0,0,1);
-    }//end x
-    //plot y
-    for (y = -400; y <= 400; y= y+10){
-      h = 0;  k = y; plot2Dpoint(h,k,0,0,1);
-    }//end x
-
-    //plot
-    for (x = -400; x <= 400; x++){
-      h = x;
-      k = (float)(-3*((x - 4)*(x - 4))-5);
-        cout<<"points "<<h<<" "<<k<<endl;
-        plot2Dpoint(h,k,1,1,0);
+    for (i = 0; i <= 800; i++){
+      h = (float)(i - 400)/400;
+      for( j = 0; j <= 800; j++){
+        k = (float)(400 - j)/400;
+        //printf("drawpoints  %f %f \n",h,k);
+        //cout<<"points "<<h<<" "<<k<<endl;
+        plot2Dpoint(h,k,red,green,blue);
+        //glFlush();
+      }//end i
+      green = green + (1.0/800.0);
       if (green > 1)green = 0;
     }//end j
-
-    for (x = -400; x <= 400; x++){
-      h = x;
-      k = (float)(x*x);
-        cout<<"points "<<h<<" "<<k<<endl;
-        plot2Dpoint(h,k,0,1,0);
-      if (green > 1)green = 0;
-    }//end j
-
     glEnd();//end points
 
     glutSwapBuffers();

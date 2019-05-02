@@ -15,11 +15,11 @@ void drawPoints()
 {
     int i,j;
     float h,k;
-    float red = 4.0,green = 4 ,blue = 2.0;
+    float red = (190.0/255),green = (200/255) ,blue = (10.0/255);
     //glClearColor(red,green,blue,alpha);
-    glClearColor(0.7, 0.1, 0.4, 4.0);
+    glClearColor(0.9, 0.0, 0.0, 9.0);
     glClear(GL_COLOR_BUFFER_BIT);
-    glColor3f(3.0, 4.0, 1.0);
+    glColor3f(3.0, 7.0, 9.0);
     //void glOrtho(GLdouble left,  GLdouble right,
     //GLdouble bottom,  GLdouble top,
     //GLdouble nearVal,  GLdouble farVal);
@@ -50,7 +50,7 @@ int main(int argc, char **argv)
     glutInitDisplayMode(GLUT_DOUBLE);
     glutInitWindowSize(800, 800);
     glutInitWindowPosition(100, 100);
-    glutCreateWindow("OpenGL -800x800");
+    glutCreateWindow("Noah's OpenGL -800x800");
     glutDisplayFunc(drawPoints);
     glutMainLoop();
     return 0;

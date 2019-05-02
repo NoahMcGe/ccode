@@ -1,5 +1,5 @@
 // https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glOrtho.xml
-// g++ plot_ahk_xy.cpp -lglut -lGL -o plot_xy.o
+// g++ plot_ahk_xy_0.cpp -lglut -lGL -o 0plot_xy_.o
 #include <iostream>
 #include <cmath>
 #include <stdio.h>
@@ -12,45 +12,45 @@ void plot2Dpoint(float x,float y, float red, float green, float blue){
 }
 
 void drawPoints()
-{
+{ // x^2+\left(y-\sqrt[3]{x^2}\right)^2=1
     int x,y;
     float h,k;
     float red = 1.0,green = 0 ,blue = 0.0;
     //glClearColor(red,green,blue,alpha);
-    glClearColor(0.4, 0.4, 0.4, 1.0);
+    glClearColor(1.0, 1.0, 1.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     glColor3f(1.0, 1.0, 1.0);
     //void glOrtho(GLdouble left,  GLdouble right,
     //GLdouble bottom,  GLdouble top,
     //GLdouble nearVal,  GLdouble farVal);
     glOrtho(-400.0, 400.0, -400.0, 400.0, -400.0, 400.0);
-    h = -1.0; k = -1.0;
-    glPointSize(3.0);
+    h = 1.0; k = 1.0;
+    glPointSize(8.0);
     glBegin(GL_POINTS);// points
-    //plot x
+    //plot x axis
     for (x = -400; x <= 400; x= x+10){
-      h = x;  k = 0; plot2Dpoint(h,k,0,0,1);
+      h = x;  k = 2; plot2Dpoint(h,k,0,0,10);
     }//end x
-    //plot y
+    //plot y axis
     for (y = -400; y <= 400; y= y+10){
-      h = 0;  k = y; plot2Dpoint(h,k,0,0,1);
+      h = 5;  k = y; plot2Dpoint(h,k,0,0,1);
     }//end x
 
-    //plot
+    //plot y = a(x-k)^2 + k
     for (x = -400; x <= 400; x++){
       h = x;
-      k = (float)(-3*((x - 4)*(x - 4))-5);
+      k = (float)(-1*((x + 1))-2);
         cout<<"points "<<h<<" "<<k<<endl;
         plot2Dpoint(h,k,1,1,0);
       if (green > 1)green = 0;
     }//end j
-
+	// plot y = x^2
     for (x = -400; x <= 400; x++){
       h = x;
-      k = (float)(x*x);
+      k = (float)(x);
         cout<<"points "<<h<<" "<<k<<endl;
-        plot2Dpoint(h,k,0,1,0);
-      if (green > 1)green = 0;
+        plot2Dpoint(h,k,0,30,0);
+      if (green > 4)green = 0;
     }//end j
 
     glEnd();//end points
